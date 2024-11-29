@@ -14,7 +14,6 @@ import {
 interface UnitCardProps {
   unit: Unit;
 }
-
 const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
@@ -23,15 +22,15 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg w-[447px] h-[453px]">
+    <div className="bg-white shadow-md rounded-lg w-full sm:w-[300px] md:w-[350px] lg:w-[480px] h-auto">
       {/* Image Container */}
       <div className="relative">
         <Image
           src={unit.image}
           alt={unit.title}
-          width={340}
-          height={192}
-          className="w-full h-[311px] object-cover rounded-lg"
+          width={447} 
+          height={300} 
+          className="w-full h-[200px] md:h-[250px] lg:h-[311px] object-cover rounded-t-lg"
         />
 
         {/* Status Badge */}
@@ -59,14 +58,14 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
 
       {/* Unit Details */}
       <div className="p-4">
-        <h2 className="text-base font-semibold mb-1">{unit.title}</h2>
+        <h2 className="text-sm md:text-base font-semibold mb-1">{unit.title}</h2>
         <div className="flex gap-2">
           <LocationIcon />
-          <p className="text-sm mb-4">{unit.address}</p>
+          <p className="text-xs md:text-sm mb-4">{unit.address}</p>
         </div>
         <Separator />
-        <div className="flex justify-between items-center text-sm mt-4">
-          <div className=" flex gap-3">
+        <div className="flex justify-between items-center text-xs md:text-sm mt-4">
+          <div className="flex gap-3">
             <div className="flex gap-2 pl-2">
               <BadroomIcon />
               <p>{unit.bedrooms}</p>
@@ -87,5 +86,6 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
     </div>
   );
 };
+
 
 export default UnitCard;

@@ -88,9 +88,6 @@ const Footer: React.FC = () => {
              <Link href={""}>
              <FacebookIcon/>
              </Link>
-             <Link href={""}>
-             <FacebookIcon/>
-             </Link>
             </div>
           </div>
         </div>

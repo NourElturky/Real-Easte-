@@ -1,4 +1,3 @@
-// pages/index.tsx
 import React from "react";
 import { Unit } from "./_components/_types/CardTypes";
 import UnitGrid from "./_components/unitCard/unitGrid";
@@ -78,8 +77,8 @@ const cardUnits: Unit[] = [
 const Home: React.FC = () => {
   return (
     <div>
-      <div className="container mx-auto p-6">
-        <UnitGrid units={cardUnits} />
+<div className="container mx-auto p-4 sm:p-6">
+<UnitGrid units={cardUnits} />
       </div>
       <div className="mt-20">
         <Footer />
