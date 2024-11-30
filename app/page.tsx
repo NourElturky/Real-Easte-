@@ -1,7 +1,11 @@
-import React from "react";
-import { Unit } from "./_components/_types/CardTypes";
-import UnitGrid from "./_components/unitCard/unitGrid";
+// pages/index.tsx
+import React from 'react';
+import { Unit } from './_components/_types/CardTypes';
+import UnitGrid from './_components/unitCard/unitGrid';
+import { PropertyCard } from './_components/_types/PropertyCard';
+import PropertyGrid from './_components/propertyCard/PropertyGrid';
 import Footer from "./_components/footer/Footer";
+
 
 const cardUnits: Unit[] = [
   {
@@ -74,12 +78,39 @@ const cardUnits: Unit[] = [
   },
 ];
 
+const properties: PropertyCard[] = [
+  {
+    id: 1,
+    title: "New York",
+    count: 8,
+    image: '/images/c1.png',
+    link: "/properties/new-york",
+  },
+  {
+    id: 2,
+    title: "Chicago",
+    count: 2,
+    image: '/images/c2.png',
+    link: "/properties/chicago",
+  },
+  {
+    id: 3,
+    title: "Los Angeles",
+    count: 1,
+    image: '/images/c3.png',
+    link: "/properties/los-angeles",
+  },
+];
+
 const Home: React.FC = () => {
   return (
-    <div>
-<div className="container mx-auto p-4 sm:p-6">
-<UnitGrid units={cardUnits} />
+    <div className="container mx-auto p-6">
+      <PropertyGrid properties={properties} />
+
+      <div className="mt-12">
+        <UnitGrid units={cardUnits} />
       </div>
+
       <div className="mt-20">
         <Footer />
       </div>
