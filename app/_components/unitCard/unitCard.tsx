@@ -22,7 +22,7 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg w-full sm:w-[300px] md:w-[350px] lg:w-[480px] h-auto">
+    <div className="bg-white shadow-md rounded-lg w-full sm:w-[300px] md:w-[350px] lg:w-auto h-auto">
       {/* Image Container */}
       <div className="relative">
         <Image
