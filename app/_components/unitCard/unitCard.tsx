@@ -27,7 +27,7 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
       <div className="relative">
         <Image
           src={unit.image}
-          alt={unit.title}
+          alt={unit.location}
           width={447} 
           height={300} 
           className="w-full h-[200px] md:h-[250px] lg:h-[311px] object-cover rounded-t-lg"
@@ -58,7 +58,7 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
 
       {/* Unit Details */}
       <div className="p-4">
-        <h2 className="text-sm md:text-base font-semibold mb-1">{unit.title}</h2>
+        <h2 className="text-sm md:text-base font-semibold mb-1">{unit.location}</h2>
         <div className="flex gap-2">
           <LocationIcon />
           <p className="text-xs md:text-sm mb-4">{unit.address}</p>
@@ -76,7 +76,7 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
             </div>
             <div className="flex gap-2 pl-2 border-l border-gray-200">
               <AreaIcon />
-              <p>{unit.size}</p>
+              <p>{unit.area}</p>
             </div>
           </div>
 
