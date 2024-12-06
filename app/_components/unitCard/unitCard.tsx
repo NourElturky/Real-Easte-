@@ -1,28 +1,40 @@
-"use client";
-import React, { useState } from "react";
+import { useRouter } from 'next/navigation'; 
 import { Unit } from "../_types/CardTypes";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
-import {
-  BathroomIcon,
-  BadroomIcon,
-  AreaIcon,
-  LocationIcon,
-  FavoriteIcon,
-} from "../svgs";
+import { BathroomIcon, BadroomIcon, AreaIcon, LocationIcon, FavoriteIcon } from "../svgs";
+import { useState } from "react";
 
 interface UnitCardProps {
   unit: Unit;
 }
+
 const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
+  const router = useRouter(); 
   const [isFavorited, setIsFavorited] = useState(false);
+
+  // Check if the user is logged in by verifying the user data in localStorage
+  const isUserLoggedIn = typeof window !== "undefined" && localStorage.getItem("userData");
+
+  const handleCardClick = () => {
+    if (isUserLoggedIn) {
+      // If the user is logged in, allow the navigation to the unit details page (or wherever you want)
+      router.push(`/unit-details/${unit.id}`);  // Modify this to the correct route
+    } else {
+      // If the user is not logged in, redirect them to the login page
+      router.push('/login');
+    }
+  };
 
   const toggleFavorite = () => {
     setIsFavorited((prev) => !prev);
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg w-full sm:w-[300px] md:w-[350px] lg:w-auto h-auto">
+    <div
+      className="bg-white shadow-md rounded-lg w-full sm:w-[300px] md:w-[350px] cursor-pointer lg:w-auto h-auto"
+      onClick={handleCardClick} 
+    >
       {/* Image Container */}
       <div className="relative">
         <Image
@@ -86,6 +98,5 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
     </div>
   );
 };
-
 
 export default UnitCard;
