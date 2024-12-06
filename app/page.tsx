@@ -1,27 +1,27 @@
 import React from "react";
 import { Unit } from "./_components/_types/CardTypes";
-import UnitGrid from "./_components/unitCard/unitGrid";
 import Footer from "./_components/footer/Footer";
+import { Section } from "./_components/unitCard/SectionWrapper";
 
 const cardUnits: Unit[] = [
   {
     id: 1,
-    title: "Skyper Pool Apartment",
+    location: "Skyper Pool Apartment",
     address: "1020 Bloomingdale Ave",
     bedrooms: 4,
     bathrooms: 2,
-    size: 450,
+    area: 450,
     price: "$280,000",
     image: "/images/img1.png",
     status: "For Sale",
   },
   {
     id: 2,
-    title: "North Dillard Street",
+    location: "North Dillard Street",
     address: "4330 Bell Shoals Rd",
     bedrooms: 4,
     bathrooms: 2,
-    size: 400,
+    area: 400,
     price: "$250/month",
     image: "/images/img2.png",
     status: "For Rent",
@@ -29,46 +29,144 @@ const cardUnits: Unit[] = [
   },
   {
     id: 3,
-    title: "Eaton Garth Penthouse",
+    location: "Eaton Garth Penthouse",
     address: "7722 18th Ave, Brooklyn",
     bedrooms: 4,
     bathrooms: 2,
-    size: 450,
+    area: 450,
     price: "$180,000",
     image: "/images/img3.png",
     status: "For Sale",
   },
   {
     id: 4,
-    title: "Skyper Pool Apartment",
+    location: "Skyper Pool Apartment",
     address: "1020 Bloomingdale Ave",
     bedrooms: 4,
     bathrooms: 2,
-    size: 450,
+    area: 450,
     price: "$280,000",
     image: "/images/img1.png",
     status: "For Sale",
   },
   {
     id: 5,
-    title: "North Dillard Street",
+    location: "North Dillard Street",
     address: "4330 Bell Shoals Rd",
     bedrooms: 4,
     bathrooms: 2,
-    size: 400,
+    area: 400,
     price: "$250/month",
     image: "/images/img2.png",
     status: "For Rent",
   },
   {
     id: 6,
-    title: "Eaton Garth Penthouse",
+    location: "Eaton Garth Penthouse",
     address: "7722 18th Ave, Brooklyn",
     bedrooms: 4,
     bathrooms: 2,
-    size: 450,
+    area: 450,
     price: "$180,000",
     image: "/images/img3.png",
+    status: "For Sale",
+    delivery: "Featured",
+  },
+];
+
+const rentProperties: Unit[] = [
+  {
+    id: 7,
+    location: "New Apartment Nice View",
+    address: "42 Avenue D, Brooklyn",
+    bedrooms: 4,
+    bathrooms: 1,
+    area: 460,
+    price: "$850/month",
+    image: "/images/img4.png",
+    status: "For Rent",
+    delivery: "Featured",
+  },
+  {
+    id: 8,
+    location: "Villa Garden With Pool",
+    address: "6822 Bay Pkwy, Brooklyn",
+    bedrooms: 3,
+    bathrooms: 1,
+    area: 350,
+    price: "$350/month",
+    image: "/images/img5.png",
+    status: "For Rent",
+  },
+  {
+    id: 9,
+    location: "Ely Parkway Apartment",
+    address: "7203 20th Ave, Brooklyn",
+    bedrooms: 4,
+    bathrooms: 1,
+    area: 560,
+    price: "$5,800/month",
+    image: "/images/img6.png",
+    status: "For Rent",
+    delivery: "Featured",
+  },
+  {
+    id: 10,
+    location: "Modern Elegant Apartment",
+    address: "1458 W Taylor St",
+    bedrooms: 4,
+    bathrooms: 1,
+    area: 300,
+    price: "$590/month",
+    image: "/images/img7.png",
+    status: "For Rent",
+  },
+];
+
+const saleProperties: Unit[] = [
+  {
+    id: 11,
+    location: "New Apartment Nice View",
+    address: "42 Avenue D, Brooklyn",
+    bedrooms: 4,
+    bathrooms: 1,
+    area: 460,
+    price: "$850/month",
+    image: "/images/img5.png",
+    status: "For Sale",
+  },
+  {
+    id: 12,
+    location: "Villa Garden With Pool",
+    address: "6822 Bay Pkwy, Brooklyn",
+    bedrooms: 3,
+    bathrooms: 1,
+    area: 350,
+    price: "$350/month",
+    image: "/images/img7.png",
+    status: "For Sale",
+    delivery: "Featured",
+  },
+  {
+    id: 13,
+    location: "Ely Parkway Apartment",
+    address: "7203 20th Ave, Brooklyn",
+    bedrooms: 4,
+    bathrooms: 1,
+    area: 560,
+    price: "$5,800/month",
+    image: "/images/img8.png",
+    status: "For Sale",
+  },
+  {
+    id: 14,
+    location: "Modern Elegant Apartment",
+    address: "1458 W Taylor St",
+    bedrooms: 4,
+    bathrooms: 1,
+    area: 300,
+    price: "$590/month",
+    image: "/images/img6.png",
     status: "For Sale",
     delivery: "Featured",
   },
@@ -77,12 +175,29 @@ const cardUnits: Unit[] = [
 const Home: React.FC = () => {
   return (
     <div>
-<div className="container mx-auto p-4 sm:p-6">
-<UnitGrid units={cardUnits} />
+      <div className="container mx-auto p-4 sm:p-6">
+        {/* Discover Our Best Deals Section */}
+        <Section
+          title="Discover Our Best Deals"
+          units={cardUnits}
+          gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        />
+
+        {/* Recent Properties for Rent Section */}
+        <Section
+          title="Recent Properties for Rent"
+          units={rentProperties}
+          gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        />
+
+        {/* Recent Properties for sale Section */}
+        <Section
+          title="Recent Properties for Sale"
+          units={saleProperties}
+          gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        />
       </div>
-      <div className="mt-20">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
