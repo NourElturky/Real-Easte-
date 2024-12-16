@@ -2,8 +2,8 @@
 import React from 'react';
 import { Unit } from './_components/_types/CardTypes';
 import UnitGrid from './_components/unitCard/unitGrid';
-import { PropertyCard } from './_components/_types/PropertyCard';
-import PropertyGrid from './_components/propertyCard/PropertyGrid';
+import { Property } from './_components/_types/PropertyType';
+import PropertyGrid from './_components/propertyCard/propertyGrid';
 
 const cardUnits: Unit[] = [
   {
@@ -76,7 +76,7 @@ const cardUnits: Unit[] = [
   },
 ];
 
-const properties: PropertyCard[] = [
+const properties: Property[] = [
   {
     id: 1,
     title: "New York",
