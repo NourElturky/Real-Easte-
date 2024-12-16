@@ -1,37 +1,48 @@
-"use client";
-import React, { useState } from "react";
+import { useRouter } from 'next/navigation'; 
 import { Unit } from "../_types/CardTypes";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
-import {
-  BathroomIcon,
-  BadroomIcon,
-  AreaIcon,
-  LocationIcon,
-  FavoriteIcon,
-} from "../svgs";
+import { BathroomIcon, BadroomIcon, AreaIcon, LocationIcon, FavoriteIcon } from "../svgs";
+import { useState } from "react";
 
 interface UnitCardProps {
   unit: Unit;
 }
 
 const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
+  const router = useRouter(); 
   const [isFavorited, setIsFavorited] = useState(false);
+
+  // Check if the user is logged in by verifying the user data in localStorage
+  const isUserLoggedIn = typeof window !== "undefined" && localStorage.getItem("userData");
+
+  const handleCardClick = () => {
+    if (isUserLoggedIn) {
+      // If the user is logged in, allow the navigation to the unit details page (or wherever you want)
+      router.push(`/unit-details/${unit.id}`);  // Modify this to the correct route
+    } else {
+      // If the user is not logged in, redirect them to the login page
+      router.push('/login');
+    }
+  };
 
   const toggleFavorite = () => {
     setIsFavorited((prev) => !prev);
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg w-[447px] h-[453px]">
+    <div
+      className="bg-white shadow-md rounded-lg w-full sm:w-[300px] md:w-[350px] cursor-pointer lg:w-auto h-auto"
+      onClick={handleCardClick} 
+    >
       {/* Image Container */}
       <div className="relative">
         <Image
           src={unit.image}
-          alt={unit.title}
-          width={340}
-          height={192}
-          className="w-full h-[311px] object-cover rounded-lg"
+          alt={unit.location}
+          width={447} 
+          height={300} 
+          className="w-full h-[200px] md:h-[250px] lg:h-[311px] object-cover rounded-t-lg"
         />
 
         {/* Status Badge */}
@@ -59,14 +70,14 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
 
       {/* Unit Details */}
       <div className="p-4">
-        <h2 className="text-base font-semibold mb-1">{unit.title}</h2>
+        <h2 className="text-sm md:text-base font-semibold mb-1">{unit.location}</h2>
         <div className="flex gap-2">
           <LocationIcon />
-          <p className="text-sm mb-4">{unit.address}</p>
+          <p className="text-xs md:text-sm mb-4">{unit.address}</p>
         </div>
         <Separator />
-        <div className="flex justify-between items-center text-sm mt-4">
-          <div className=" flex gap-3">
+        <div className="flex justify-between items-center text-xs md:text-sm mt-4">
+          <div className="flex gap-3">
             <div className="flex gap-2 pl-2">
               <BadroomIcon />
               <p>{unit.bedrooms}</p>
@@ -77,7 +88,7 @@ const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
             </div>
             <div className="flex gap-2 pl-2 border-l border-gray-200">
               <AreaIcon />
-              <p>{unit.size}</p>
+              <p>{unit.area}</p>
             </div>
           </div>
 

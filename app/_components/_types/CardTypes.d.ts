@@ -1,10 +1,10 @@
 export interface Unit {
     id: number;
-    title: string;
+    location: string;
     address: string;
     bedrooms: number;
     bathrooms: number;
-    size: number;
+    area: number;
     price: string;
     image: string;
     status: 'For Sale' | 'For Rent' ;
