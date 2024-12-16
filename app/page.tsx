@@ -1,5 +1,9 @@
+// pages/index.tsx
 import React from "react";
 import { Unit } from "./_components/_types/CardTypes";
+import UnitGrid from "./_components/unitCard/unitGrid";
+import { Property } from "./_components/_types/PropertyType";
+import PropertyGrid from "./_components/propertyCard/propertyGrid";
 import Footer from "./_components/footer/Footer";
 import Section from "./_components/unitCard/SectionWrapper";
 
@@ -332,31 +336,57 @@ const saleProperties: Unit[] = [
   },
 ];
 
+const properties: Property[] = [
+  {
+    id: 1,
+    title: "New York",
+    count: 8,
+    image: '/images/c1.png',
+    link: "/properties/new-york",
+  },
+  {
+    id: 2,
+    title: "Chicago",
+    count: 2,
+    image: '/images/c2.png',
+    link: "/properties/chicago",
+  },
+  {
+    id: 3,
+    title: "Los Angeles",
+    count: 1,
+    image: '/images/c3.png',
+    link: "/properties/los-angeles",
+  },
+];
+
 const Home: React.FC = () => {
   return (
-    <div>
-    <div className="container mx-auto p-4 sm:p-6">
-      <Section
-        title="Discover Our Best Deals"
-        units={cardUnits}
-        gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-        itemsPerPage={6}
-      />
-      <Section
-        title="Recent Properties for Rent"
-        units={rentProperties}
-        gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-        itemsPerPage={4}
-      />
-      <Section
-        title="Recent Properties for Sale"
-        units={saleProperties}
-        gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-        itemsPerPage={4}
-      />
+
+    <div className="container mx-auto p-6">
+      <PropertyGrid properties={properties} />
+      <div className="container mx-auto p-4 sm:p-6">
+        <Section
+          title="Discover Our Best Deals"
+          units={cardUnits}
+          gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          itemsPerPage={6}
+        />
+        <Section
+          title="Recent Properties for Rent"
+          units={rentProperties}
+          gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+          itemsPerPage={4}
+        />
+        <Section
+          title="Recent Properties for Sale"
+          units={saleProperties}
+          gridColumns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+          itemsPerPage={4}
+        />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
   );
 };
 
